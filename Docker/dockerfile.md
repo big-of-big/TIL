@@ -1,9 +1,7 @@
 ## Dockerfileからイメージをビルドする
-
 ```
 docker build -t <name>:<tag> .
 ```
-
 `-t`で名前をつける。名前がないイメージはダングリングイメージと言う。
 
 ## レイヤーについて
@@ -17,5 +15,15 @@ docker build -t <name>:<tag> .
 ```
 apt-get update
 ```
-
 これを実行`apt-get install <package>`
+
+## キャッシュについて
+キャッシュはRUNごと、つまりレイヤーごとにおこる。
+開発途中はRUNを細かく分けて、キャッシュを利用することで高速化する。
+最後に短くまとめる。
+
+## CMDについて
+CMDでコンテナのデフォルトのコマンドを指定する。
+原則Dockerfileの最後に記述する。
+1つのDockerfileにCMDは1つだけ。
+RUNはレイヤーを作るがCMDは作らない。
